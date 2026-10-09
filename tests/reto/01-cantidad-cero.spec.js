@@ -7,16 +7,18 @@ test('RETO 1 - no debería permitirse agregar un producto con cantidad cero', as
     has: page.getByRole('heading', { name: 'Hamburguesa Clásica' })
   });
 
-  // TODO 1: intenta llevar la cantidad de la Hamburguesa Clásica a 0.
-  // Pista: dentro de esta tarjeta existe un botón con data-minus="1".
+// TODO 1
+await hamburguesa.locator('[data-minus="1"]').click();
 
+// TODO 2
+await hamburguesa
+  .getByRole('button', { name: 'Agregar' })
+  .click();
 
-  // TODO 2: intenta agregar el producto al carrito.
-  // Pista: busca dentro de la tarjeta el botón "Agregar".
-
-
-  // TODO 3: comprueba que un producto con cantidad 0
-  // NO debería aparecer en el carrito.
+// TODO 3
+await expect(
+  page.getByText('Hamburguesa Clásica', { exact: true })
+).toHaveCount(1);
   //
   // Pista: piensa qué texto podrías buscar y cuántas veces
   // debería aparecer "Hamburguesa Clásica" si NO fue agregada.
